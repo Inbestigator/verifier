@@ -6,7 +6,6 @@ import { flagsTable } from "../../db/schema";
 export default async function (interaction: ModalSubmitInteraction) {
   const [{ id: userId } = {}] = interaction.getField("user", true).userSelect();
   const reason = interaction.getField("reason", true).textInput();
-  (interaction.data.resolved ?? {}).roles ??= {};
   const roles = interaction.getField("roles")?.roleSelect() ?? [];
   const { guild } = interaction;
 

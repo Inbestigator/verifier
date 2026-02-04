@@ -1,0 +1,13 @@
+{
+  "name": "verifier",
+  "compatibility_date": "2026-02-03",
+  "main": "src/cf.ts",
+  "build": { "command": "dressed build" },
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    }
+  }
+}

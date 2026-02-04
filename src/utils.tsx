@@ -1,10 +1,9 @@
 import { ActionRow, Button, type MessageComponentInteraction, type ModalSubmitInteraction } from "@dressed/react";
-import { resolveKey } from "@dressed/ws/cache";
 import { InteractionType } from "discord-api-types/v10";
 import { addMemberRole } from "dressed";
 import { eq, sql } from "drizzle-orm";
 import showChallenge from "./components/buttons/challenge";
-import { cache, db, redis } from "./db";
+import { cache, db, redis, resolveKey } from "./db";
 import { usersTable } from "./db/schema";
 
 export async function completeAuthorization(

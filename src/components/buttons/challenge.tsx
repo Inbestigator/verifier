@@ -11,7 +11,7 @@ export default async function (
   challenge?: Awaited<ReturnType<typeof cache.getChallenge>>,
 ) {
   challenge ??= await cache.getChallenge(interaction.user.id);
-  interaction.showModal(
+  return interaction.showModal(
     <>
       This challenge will expire &lt;t:{challenge.expiresAt}:R&gt;.
       {challenge.steps.map((s, i) => (
