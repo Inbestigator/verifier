@@ -1,14 +1,14 @@
 import { hash } from "node:crypto";
 import { createCache, getters } from "@dressed/ws/cache";
-import { Redis } from "@upstash/redis/cloudflare";
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { generateSecret } from "otplib";
+import { createClient } from "redis";
 import { usersTable } from "./schema";
 
 export const resolveKey = (key: string, args: string[]) => `${key.toString()}:${hash("sha1", JSON.stringify(args))}`;
 
-export const redis = new Redis({ url: process.env.REDIS_URL, token: process.env.REDIS_TOKEN });
+export const redis = await createClient({ url: process.env.REDIS_URL }).connect();
 export const db = drizzle(process.env.DATABASE_URL as string);
 
 // Captcha-like thing, not the best idea ever but it should work
@@ -84,8 +84,9 @@ export const cache = createCache(
   {
     logic: {
       async get(key) {
-        const data = await redis.get<{ staleAt: number; value: unknown }>(key);
-        if (!data) return { state: "miss" };
+        const res = await redis.get(key);
+        if (!res) return { state: "miss" };
+        const data = JSON.parse(res);
         return { state: Date.now() < data.staleAt ? "hit" : "stale", ...data };
       },
       set(key, value) {
@@ -93,7 +94,7 @@ export const cache = createCache(
           key,
           JSON.stringify({ staleAt: Date.now() + (key.startsWith("getChallenge") ? 4 : 25) * 6e4, value }),
           {
-            ex: key.startsWith("getChallenge") ? 300 : 1800,
+            expiration: { type: "EX", value: key.startsWith("getChallenge") ? 300 : 1800 },
           },
         );
       },

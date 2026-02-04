@@ -1,0 +1,4 @@
+{
+  "buildCommand": "dressed build",
+  "outputDirectory": ".dressed"
+}
