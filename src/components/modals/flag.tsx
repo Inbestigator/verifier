@@ -1,7 +1,7 @@
 import type { ModalSubmitInteraction } from "@dressed/react";
 import { removeMemberRole } from "dressed";
 import { eq } from "drizzle-orm";
-import { db } from "../../db";
+import { cache, db } from "../../db";
 import { flagsTable, usersTable } from "../../db/schema";
 
 export default async function (interaction: ModalSubmitInteraction) {
@@ -19,6 +19,7 @@ export default async function (interaction: ModalSubmitInteraction) {
       .where(eq(usersTable.id, userId))
       .returning({ id: usersTable.id }),
     interaction.deferReply({ ephemeral: true }),
+    cache.getDBUser.clear(userId),
   ]);
 
   if (!updatedUser) return interaction.editReply("That user hasn't been initialized yet!");
