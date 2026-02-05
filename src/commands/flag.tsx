@@ -9,7 +9,7 @@ import {
 } from "@dressed/react";
 import { type CommandConfig, CommandOption } from "dressed";
 import { Fragment } from "react";
-import { cache } from "../db";
+import { cache } from "../db/index.ts";
 
 export const config = {
   description: "List/submit flags for a user.",

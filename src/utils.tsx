@@ -2,9 +2,9 @@ import { ActionRow, Button, type MessageComponentInteraction, type ModalSubmitIn
 import { InteractionType } from "discord-api-types/v10";
 import { addMemberRole } from "dressed";
 import { eq, sql } from "drizzle-orm";
-import showChallenge from "./components/buttons/challenge";
-import { cache, db, redis, resolveKey } from "./db";
-import { usersTable } from "./db/schema";
+import showChallenge from "./components/buttons/challenge.tsx";
+import { cache, db, redis, resolveKey } from "./db/index.ts";
+import { usersTable } from "./db/schema.ts";
 
 export async function completeAuthorization(
   interaction: MessageComponentInteraction | ModalSubmitInteraction,

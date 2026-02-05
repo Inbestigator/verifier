@@ -2,8 +2,8 @@ import type { Params } from "@dressed/matcher";
 import { Label, type MessageComponentInteraction, TextInput } from "@dressed/react";
 import { generateURI } from "otplib";
 import qrcode from "qrcode-terminal";
-import { cache } from "../../db";
-import { completeAuthorization } from "../../utils";
+import { cache } from "../../db/index.ts";
+import { completeAuthorization } from "../../utils.tsx";
 
 export const pattern = `verify-:role(\\d+)-:forceOTP(true|false)`;
 

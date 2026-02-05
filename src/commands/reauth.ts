@@ -1,7 +1,7 @@
 import type { CommandInteraction } from "@dressed/react";
 import { eq } from "drizzle-orm";
-import { cache, db } from "../db";
-import { usersTable } from "../db/schema";
+import { cache, db } from "../db/index.ts";
+import { usersTable } from "../db/schema.ts";
 
 export default async function (interaction: CommandInteraction) {
   const userId = interaction.user.id;

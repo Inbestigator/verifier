@@ -1,8 +1,8 @@
 import type { Params } from "@dressed/matcher";
 import type { ModalSubmitInteraction } from "@dressed/react";
 import { MessageFlags } from "discord-api-types/v10";
-import { cache } from "../../db";
-import { completeAuthorization, failAuthorization } from "../../utils";
+import { cache } from "../../db/index.ts";
+import { completeAuthorization, failAuthorization } from "../../utils.tsx";
 
 export const pattern = `challenge-:role(\\d+)`;
 

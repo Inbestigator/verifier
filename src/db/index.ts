@@ -4,7 +4,7 @@ import { desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { generateSecret } from "otplib";
 import { createClient } from "redis";
-import { flagsTable, usersTable } from "./schema";
+import { flagsTable, usersTable } from "./schema.ts";
 
 export const resolveKey = (key: string, args: string[]) => `${key.toString()}:${hash("sha1", JSON.stringify(args))}`;
 

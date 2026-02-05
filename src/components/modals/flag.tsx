@@ -1,8 +1,8 @@
 import type { ModalSubmitInteraction } from "@dressed/react";
 import { removeMemberRole } from "dressed";
 import { eq } from "drizzle-orm";
-import { cache, db } from "../../db";
-import { flagsTable, usersTable } from "../../db/schema";
+import { cache, db } from "../../db/index.ts";
+import { flagsTable, usersTable } from "../../db/schema.ts";
 
 export default async function (interaction: ModalSubmitInteraction) {
   const [{ id: userId } = {}] = interaction.getField("user", true).userSelect();

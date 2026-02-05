@@ -4,9 +4,10 @@
   "scripts": {
     "dev": "bun --hot dev.ts",
     "register": "bun run build -r && bun start",
-    "build": "dressed build",
+    "build": "dressed build && rm -rf dist && tsc -p ./tsconfig-build.jsonc",
     "start": "bun .dressed",
-    "db:push": "drizzle-kit generate && drizzle-kit push"
+    "db:push": "drizzle-kit generate && drizzle-kit push",
+    "checks": "tsc --noEmit && biome check --write"
   },
   "dependencies": {
     "@dressed/react": "^1.8.5-canary.1",
@@ -29,6 +30,7 @@
     "@types/qrcode": "^1.5.6",
     "@types/qrcode-terminal": "^0.12.2",
     "@types/react": "^19.2.10",
-    "drizzle-kit": "^0.31.8"
+    "drizzle-kit": "^0.31.8",
+    "typescript": "^5.9.3"
   }
 }

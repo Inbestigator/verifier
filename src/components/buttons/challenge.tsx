@@ -1,7 +1,7 @@
 import type { Params } from "@dressed/matcher";
 import { Label, type MessageComponentInteraction, TextInput } from "@dressed/react";
 import { Fragment } from "react";
-import { cache } from "../../db";
+import { cache } from "../../db/index.ts";
 
 export const pattern = `challenge-:role(\\d+)`;
 

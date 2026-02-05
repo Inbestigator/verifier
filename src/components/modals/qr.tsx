@@ -2,9 +2,9 @@ import type { Params } from "@dressed/matcher";
 import type { ModalSubmitInteraction } from "@dressed/react";
 import { and, eq, isNull } from "drizzle-orm";
 import { generate } from "otplib";
-import { cache, db } from "../../db";
-import { usersTable } from "../../db/schema";
-import { completeAuthorization, failAuthorization } from "../../utils";
+import { cache, db } from "../../db/index.ts";
+import { usersTable } from "../../db/schema.ts";
+import { completeAuthorization, failAuthorization } from "../../utils.tsx";
 
 export const pattern = `qr-:role(\\d+)`;
 
