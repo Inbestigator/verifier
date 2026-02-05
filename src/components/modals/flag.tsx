@@ -30,6 +30,7 @@ export default async function (interaction: ModalSubmitInteraction) {
       .values({ flagger: interaction.user.id, user: userId, reason, server: guild.id })
       .returning({ user: flagsTable.user })
       .catch(() => []),
+    cache.listFlags.clear(userId),
     ...roles.map(async ({ id }) => {
       try {
         await removeMemberRole(guild.id, userId, id);

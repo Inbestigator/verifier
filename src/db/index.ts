@@ -1,10 +1,10 @@
 import { hash } from "node:crypto";
 import { createCache, getters } from "@dressed/ws/cache";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { generateSecret } from "otplib";
 import { createClient } from "redis";
-import { usersTable } from "./schema";
+import { flagsTable, usersTable } from "./schema";
 
 export const resolveKey = (key: string, args: string[]) => `${key.toString()}:${hash("sha1", JSON.stringify(args))}`;
 
@@ -80,8 +80,11 @@ export const cache = createCache(
       }
       return user as typeof usersTable.$inferSelect;
     },
+    listFlags: (userId: string) =>
+      db.select().from(flagsTable).where(eq(flagsTable.user, userId)).orderBy(desc(flagsTable.createdAt)).limit(16),
   },
   {
+    desiredProps: { getGuild: ["name"] },
     logic: {
       async get(key) {
         const res = await redis.get(key);
