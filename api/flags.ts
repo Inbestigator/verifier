@@ -1,4 +1,4 @@
-import { cache } from "../src/db";
+import { cache } from "../src/db/index.ts";
 
 export async function GET(req: Request) {
   const userId = new URL(req.url).searchParams.get("u");
