@@ -73,9 +73,10 @@ export const cache = createCache(
       if (!variation) throw new Error("No variations");
       return { ...variation, expiresAt: Math.round(Date.now() / 1000) + 5 * 60 };
     },
-    async getDBUser(userId: string) {
+    async getDBUser(userId: string, noSet?: boolean) {
       let [user] = await db.select().from(usersTable).where(eq(usersTable.id, userId)).limit(1);
       if (!user) {
+        if (noSet) throw new Error("No user found with that ID");
         [user] = await db.insert(usersTable).values({ id: userId, secret: generateSecret() }).returning();
       }
       return user as typeof usersTable.$inferSelect;

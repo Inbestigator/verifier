@@ -3,6 +3,8 @@ import { type CommandConfig, CommandOption } from "dressed";
 
 export const config = {
   description: "Insert a verification message into the channel.",
+  default_member_permissions: ["Administrator"],
+  contexts: ["Guild"],
   options: [
     CommandOption({
       type: "Role",
@@ -20,8 +22,6 @@ export const config = {
       ],
     }),
   ],
-  default_member_permissions: ["Administrator"],
-  contexts: ["Guild"],
 } satisfies CommandConfig;
 
 export default function (interaction: CommandInteraction<typeof config>) {
