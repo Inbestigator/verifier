@@ -10,27 +10,25 @@
     "checks": "tsc --noEmit && biome check --write"
   },
   "dependencies": {
-    "@dressed/react": "^1.8.5-canary.1",
+    "@dressed/react": "^1.8.5-canary.2",
     "@dressed/ws": "^0.5.0-canary.1",
-    "discord-api-types": "^0.38.38",
-    "dressed": "^2.0.0-canary.2.1",
-    "drizzle-orm": "^0.45.1",
-    "otplib": "^13.2.1",
-    "pg": "^8.18.0",
-    "qrcode": "^1.5.4",
+    "discord-api-types": "^0.38.47",
+    "dressed": "^2.0.0-rc.2.1",
+    "drizzle-orm": "^0.45.2",
+    "otplib": "^13.4.0",
+    "pg": "^8.20.0",
     "qrcode-terminal": "^0.12.0",
-    "react": "^19.2.4",
-    "redis": "^5.10.0"
+    "react": "^19.2.5",
+    "redis": "^5.12.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.14",
-    "@dressed/framework": "^0.4.0",
-    "@types/node": "^25.2.0",
-    "@types/pg": "^8.16.0",
-    "@types/qrcode": "^1.5.6",
+    "@biomejs/biome": "^2.4.12",
+    "@dressed/framework": "^0.5.0",
+    "@types/node": "^25.6.0",
+    "@types/pg": "^8.20.0",
     "@types/qrcode-terminal": "^0.12.2",
-    "@types/react": "^19.2.10",
-    "drizzle-kit": "^0.31.8",
-    "typescript": "^5.9.3"
+    "@types/react": "^19.2.14",
+    "drizzle-kit": "^0.31.10",
+    "typescript": "^6.0.3"
   }
 }

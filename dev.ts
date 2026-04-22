@@ -10,7 +10,7 @@ Object.assign(dressedConfig, config);
 const files = await Promise.all(
   ["commands", "components", "events"].map(async (d) =>
     Promise.all(
-      (await crawlDir("src", d, config.build?.extensions)).map(async (f) => ({
+      (await crawlDir("src", d, config.build?.include)).map(async (f) => ({
         ...f,
         exports: await import(resolve(f.path)),
       })),

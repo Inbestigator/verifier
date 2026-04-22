@@ -1,3 +1,4 @@
+// Dist the database stuff so the api can use it
 {
   "compilerOptions": {
     // Environment setup & latest features
@@ -15,6 +16,7 @@
     "outDir": "dist",
     "declaration": true,
     "rewriteRelativeImportExtensions": true,
+    "rootDir": "src/db",
 
     // Best practices
     "strict": true,

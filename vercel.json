@@ -1,4 +1,1 @@
-{
-  "buildCommand": "dressed build && rm -rf dist && tsc -p ./tsconfig-build.jsonc",
-  "outputDirectory": ".dressed"
-}
+{ "outputDirectory": ".dressed" }
